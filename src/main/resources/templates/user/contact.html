@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https:www.thymeleaf.org" th:replace="user/base::layout(~{::title},~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Contact Page</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container py-1" th:if="${contact}">
+			<div class="row">
+				<div class=" col-md-10 offset-md-1 ">
+					<div class="card mb-3">
+						<div class="card-body text-center">
+
+							<img th:src="@{'/img/'+${contact.image}}" class="ProfileImage">
+
+							<h3 class="mt-2"><span th:text="${contact.name}"></span>(<span
+									th:text="${contact.nickname}"></span>)
+							</h3>
+							<div class="card-body px-5">
+
+								<table class="table text-center">
+									<tbody>
+										<tr>
+											<th scope="row"> <i class="fa-solid fa-at "></i>
+											</th>
+											<td th:text="${contact.email}"></td>
+											<td disabled></td>
+
+
+										</tr>
+										<tr>
+											<th scope="row"> <i class="fa-solid fa-phone"></i>
+											</th>
+											<td th:text="${contact.phoneno}"></td>
+											<td disabled></td>
+
+
+										</tr>
+										<tr>
+											<th scope="row"> <i class="fa-solid fa-briefcase"></i>
+											</th>
+											<td th:text="${contact.work}"></td>
+											<td disabled></td>
+
+										</tr>
+
+
+									</tbody>
+								</table>
+
+								<div>
+
+									<p th:utext="${contact.description}"></p>
+								</div>
+
+							</div>
+
+							<div class=" text-center mb-2 ">
+
+								<a th:onclick="|deleteContact(${contact.cid})|" class="btn btn-white text-danger">
+									<i class="fa-solid fa-trash text-danger"></i> Delete
+									Contact</a>&nbsp;
+								<form th:action="@{'/user/updateContact/'+${contact.cid}}" method="post">
+									<button class="btn btn-white text-success px-3"><i
+											class="fa-solid fa-pen-clip text-success"></i> Edit Contact</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container alert " role="alert" th:unless="${contact}">
+			<h3 class="text-center text-danger">You are not allowed to see this contact details</h3>
+		</div>
+	</section>
+</body>
+
+</html>

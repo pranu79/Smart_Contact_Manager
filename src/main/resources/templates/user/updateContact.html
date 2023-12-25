@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https:www.thymeleaf.org" th:replace="user/base::layout(~{::title},~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Update Contact Page</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+
+				<div class=" col-md-10 offset-md-1 ">
+					<div class="card mb-2">
+
+						<div class="header  mt-3 mb-0 font-family text-center border-white">
+							<h3>Update Your Contact</h3>
+						</div>
+
+						<div class="card-body">
+
+							<form th:action="@{/user/updatingContact}" method="post" enctype="multipart/form-data"
+								th:object="${contact}" id="update">
+
+								<input type="hidden" th:value="${contact.cid}" name="cid">
+
+								<div class="mb-2 input-group flex-nowrap">
+									<i class="fa-solid fa-plus fa input-group-text bg-white border-white"></i>
+									<input type="text" class="form-control form-control-sm" name="name"
+										pattern="[A-Za-z\s]{2,}" placeholder="Enter Contact Name" required
+										th:value="${contact.name}">
+								</div>
+
+								<div class="mb-2 input-group flex-nowrap">
+									<i class="fa-solid fa-user fa input-group-text bg-white border-white"></i>
+									<input type="text" class="form-control form-control-sm" name="nickname"
+										placeholder="Enter Nick Name" th:value="${contact.nickname}">
+								</div>
+								<div class="mb-2 input-group flex-nowrap">
+									<i class="fa-solid fa-phone fa input-group-text bg-white border-white"></i>
+									<input type="text" class="form-control form-control-sm" name="phoneno"
+										placeholder="Enter Contact Number" required maxlength="10" pattern="[0-9]{10}"
+										th:value="${contact.phoneno}">
+								</div>
+								<div class="mb-2 input-group flex-nowrap">
+									<i class="fa-solid fa-at fa input-group-text bg-white border-white"></i>
+									<input type="email" class="form-control form-control-sm" name="email"
+										placeholder="Enter Email Address" required th:value="${contact.email}">
+								</div>
+								<div class="mb-2 input-group flex-nowrap">
+									<i class="fa-solid fa-briefcase fa input-group-text bg-white border-white"></i>
+									<input type="text" class="form-control form-control-sm" name="work"
+										pattern="[A-Za-z\s]{2,}" th:value="${contact.work}"
+										placeholder="Enter Work Experience">
+								</div>
+								<div class="mb-2 input-group flex-nowrap textarea">
+									<i class="fa-solid fa-paragraph fa input-group-text bg-white border-white"></i>
+									<textarea id="mytextarea" name="description" class="form-control form-control-sm"
+										placeholder="Enter Description" th:text="${contact.description}"></textarea>
+								</div>
+
+								<div class="container bg-white text-center">
+									<img th:src="@{'/img/'+${contact.image}}" class="ProfileImage img-fluid"
+										style="width:100px; height:100px">
+								</div>
+								<p class="text-center pl-4">Choose new profile image</p>
+
+								<div class=" input-group flex-nowrap">
+									<i class="fa-solid fa-file-image fa input-group-text bg-white border-white"></i>
+									<input type="file" class=" border-white" name="profileImg">
+								</div>
+								<div class="text-center">
+									<button class="btn btn-outline-info btn-sm">SAVE CONTACT</button>
+
+								</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+			<script>
+				tinymce.init({
+					selector: '#mytextarea'
+				});
+			</script>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
+			<script>
+
+				$(function () {
+					let $update = $("#update");
+
+					$update.validate({
+						rules: {
+
+							name: {
+								required: true,
+								lettersonly: true
+							},
+							phoneno: {
+								required: true,
+								min: 10
+
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							work: {
+								required: true
+							}
+
+						},
+						messages: {
+
+							name: {
+								required: "name is required",
+							},
+							phoneno: {
+								required: "phoneno is required",
+								minlength: "minimum 10 digits are allowed"
+
+							},
+							email: {
+								required: "Email is required",
+								email: "Please enter valid email address"
+							},
+							work: {
+								required: "Work info is required"
+							}
+
+						}
+
+
+					})
+
+					jQuery.validator.addMethod("lettersonly", function (value, element) {
+						return /^[^-\s][a-zA-Z_\s-]+$/.test(value);
+					});
+
+
+					jQuery.validator.addMethod("all", function (value, element) {
+						return /^[^-\s][a-zA-Z0-9_\s-]+$/.test(value);
+					});
+				})
+			</script>
+
+	</section>
+</body>
+
+</html>

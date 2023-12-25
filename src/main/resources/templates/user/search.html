@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https:www.thymeleaf.org" th:replace="user/base::layout(~{::title},~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>All Contacts Page</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+
+				<div th:if="${session.message}" th:classappend="${session.message.type}"
+					class="alert  m-1 p-2 text-center font-family" role="alert" th:text="${session.message.content}">
+				</div>
+				<th:block th:text="${@userService.removeMsg()}"></th:block>
+
+				<div class=" col-md-10 offset-md-1 ">
+					<div class="card mb-3">
+
+						<div class="card-header bg-white font-family text-center mt-2">
+							<h3>Your Contacts</h3>
+						</div>
+
+						<form th:action="@{/user/Searching}" method="post">
+							<div class="search-container mx-5 my-2">
+								<input onkeypress="search()" type="search" id="search-input"
+									class="form-control bg-light border-primary" placeholder="Search your contacts"
+									name="query">
+
+								<div class="search-result">
+									
+								</div>
+
+							</div>
+						</form>
+						<div class="card-body">
+							<table class="table text-center table-striped table-hover">
+								<thead>
+									<tr>
+										<th scope="col">Id</th>
+										<th scope="col">Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Phone no</th>
+										<th scope="col">Work</th>
+										<th scope="col">Action</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="c:${contact}">
+										<th scope="row" th:text="${'2023'+ c.cid}"></th>
+										<td><span th:text="${c.name}"></span></td>
+										<td><a th:href="@{'/user/'+${c.cid}+'/Contact'}"> <span
+													th:text="${c.email}"></span> </a></td>
+										<td th:text="${c.phoneno}"></td>
+										<td th:text="${c.work}"></td>
+										<td>
+											<a th:onclick="|deleteContact(${c.cid})|"><button class="border-light"><i
+														class="fa-solid fa-trash text-danger"></i></button></a>
+
+											<form th:action="@{'/user/updateContact/'+${c.cid}}" method="post">
+												<button class="border-light"><i
+														class="fa-solid fa-pen-clip text-success "></i></button>
+											</form>
+										</td>
+
+									</tr>
+
+								</tbody>
+							</table>
+
+							<!--<nav aria-label="...">
+								<ul class="pagination">
+
+									<li class="page-item" th:if="${currentPage !=0}">
+										<a class="page-link"
+											th:href="@{'/user/search/'+ ${currentPage-1}}">Previous
+										</a>
+									</li>
+
+									<li class="page-item " aria-current="page"
+										th:classappend="${currentPage==i-1 ? 'active' : ''}"
+										th:each="i: ${#numbers.sequence(1,totalPages)}">
+										<a class="page-link" th:href="@{'/user/search/'+ ${i-1}}" th:text="${i}">
+										</a>
+									</li>
+
+									<li class="page-item" th:if="${currentPage+1 !=totalPages}">
+										<a class="page-link" th:href="@{'/user/search/'+ ${currentPage+1}}">Next
+										</a>
+									</li>
+								</ul>
+							</nav>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

@@ -2,13 +2,10 @@ package com.smart.controller;
 
 import java.security.Principal;
 
-import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +17,6 @@ import com.smart.repository.UserRepo;
 import com.smart.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -83,7 +79,7 @@ public class HomeController {
 			System.out.println(agreement);
 			System.out.println(user);
 
-			User result = userService.createUser(user);
+			userService.createUser(user);
 
 			m.addAttribute("user", new User());
 			session.setAttribute("message", new message("Registered Successfully... ", "alert-success"));

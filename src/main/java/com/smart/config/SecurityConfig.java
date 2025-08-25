@@ -13,32 +13,32 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	public UserDetailsService getUserDetailsService() {
+    @Bean
+    UserDetailsService getUserDetailsService() {
 		return new CustomUserDetailsService();
 	}
 
-	@Bean
-	public DaoAuthenticationProvider daoAuthenticationProvider() {
+    @Bean
+    DaoAuthenticationProvider daoAuthenticationProvider() {
 		DaoAuthenticationProvider daoAuthentication = new DaoAuthenticationProvider();
 		daoAuthentication.setUserDetailsService(getUserDetailsService());
 		daoAuthentication.setPasswordEncoder(passwordEncoder());
 		return daoAuthentication;
 	}
 
-	
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests().requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/**").permitAll()
-                .and().formLogin().loginPage("/login").loginProcessingUrl("/userLogin").defaultSuccessUrl("/user/index");
+                .and().formLogin(login -> login.loginPage("/login").loginProcessingUrl("/userLogin").defaultSuccessUrl("/user/index"));
 		return http.build();
 
 	}

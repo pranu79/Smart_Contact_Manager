@@ -1,6 +1,5 @@
 package com.smart.model;
 
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

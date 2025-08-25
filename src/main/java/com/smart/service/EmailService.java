@@ -41,8 +41,8 @@ public class EmailService {
 		
 		String username = "gh2023raisoni";
 		String password= "kqrncswveawykpfs";
-		//step1 to get session object
 		
+		//step1 to get session object
 		Session session = Session.getInstance(properties, new Authenticator() {
 
 			@Override

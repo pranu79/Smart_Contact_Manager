@@ -5,12 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smart.model.Contact;
@@ -28,7 +24,7 @@ public class SearchController {
 	private ContactRepo contactRepo;
 
 	@GetMapping("search/{query}")
-	public ResponseEntity<?> search(@PathVariable(value = "query") String query, Principal p) {
+	public ResponseEntity<?> search(@PathVariable("query") String query, Principal p) {
 		System.out.println("query" +query);
 
 		User user = userRepo.findByEmail(p.getName());

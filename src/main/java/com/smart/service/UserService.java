@@ -8,7 +8,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.smart.model.User;
 import com.smart.repository.UserRepo;
 
-import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 import jakarta.servlet.http.HttpSession;
 
 @Service

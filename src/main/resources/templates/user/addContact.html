@@ -24,7 +24,6 @@
 							<form th:action="@{/user/addingContact}" method="post" enctype="multipart/form-data"
 								class="needs-validation" novalidate>
 
-
 								<div class="col-md-10 offset-md-1 mb-3">
 									<div class="input-group">
 										<i class="fa-solid fa-plus fa input-group-text bg-white border-white"></i>
@@ -88,12 +87,13 @@
 									</div>
 								</div>
 
-								<div class="mb-3 px-5">
-									<textarea class=" form-controls" id="mytextarea" name="description"
-										placeholder="Enter Description"></textarea>
-
+								<div class="col-md-10 offset-md-1 mb-3">
+									<div class="input-group ">
+										<i class="fa-solid fa-file-pen fa input-group-text bg-white border-white"></i>
+										<textarea class="form-control form-controls" name="description" rows="8"
+											placeholder="Enter Description"></textarea>
+									</div>
 								</div>
-
 
 								<div class="col-md-10 offset-md-1">
 									<div class="input-group ">
@@ -115,15 +115,6 @@
 				</div>
 			</div>
 		</div>
-
-
-<script th:src="'https://cdn.tiny.cloud/1/' + ${@environment.getProperty('API-KEY')} + '/tinymce/6/tinymce.min.js'" 
-	referrerpolicy="origin"></script>
-		<script>
-			tinymce.init({
-				selector: '#mytextarea'
-			});
-		</script>
 
 
 		<script>

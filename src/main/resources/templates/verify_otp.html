@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::title},~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Forgot Password</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container py-5">
+			<div class="row">
+
+
+
+				<div class=" col-md-8 offset-md-2 ">
+					<div class="card mb-2">
+
+						<div class="header mx-3  mt-3 mb-0 font-family text-center border-white">
+							<div class="alert alert-info my-2 text-center" role="alert">
+								We have send OTP to your registered email..
+							</div>
+							<div th:if="${session.message}" th:classappend="${session.message.type}"
+								class="alert  m-1 p-2 text-center font-family" role="alert"
+								th:text="${session.message.content}">
+							</div>
+							<th:block th:text="${@userService.removeMsg()}"></th:block>
+
+						</div>
+
+
+						<div class="card-body">
+
+							<form th:action="@{/verify-otp}" method="post">
+
+
+								<div class="col-md-8 offset-md-2 mb-3">
+									<div class="input-group">
+										<i class="fa-solid fa-at fa input-group-text bg-white border-white"></i>
+										<input type="text" class="form-control" name="otp" placeholder="Enter OTP here"
+											required autocomplete="off">
+
+									</div>
+								</div>
+
+
+
+								<div class="text-center">
+									<button class="btn btn-success btn-sm" type="submit">VERIFY
+									</button>
+
+
+								</div>
+							</form>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{user/base::layout(~{::title},~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Profile Page</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container py-1">
+			<div class="row">
+				<div class=" col-md-10 offset-md-1 ">
+					<div class="card mb-3">
+						<div class="card-body text-center">
+
+							<img th:src="@{/img/profile.png}" class="ProfileImage">
+
+							<h1 th:text="${user.name}"></h1>
+							<hr>
+
+							<div class="card-body ">
+
+								<table class="table text-center">
+									<tbody>
+										<tr>
+											<th scope="row"><i class="fa-solid fa-user "></i> User Id
+											</th>
+											<th>#SCMD567<span th:text="${user.id}"></span></th>
+											<td disabled></td>
+
+
+										</tr>
+
+
+										<tr>
+											<th scope="row"> User Email
+											</th>
+											<td th:text="${user.email}"></td>
+											<td disabled></td>
+
+
+										</tr>
+										<tr>
+											<th scope="row"> User Role
+											</th>
+											<td th:text="${user.role}"></td>
+											<td disabled></td>
+
+
+										</tr>
+										<tr>
+											<th scope="row"> User Active Mode
+											</th>
+											<td th:text="${user.enabled}"></td>
+											<td disabled></td>
+
+										</tr>
+										<tr>
+											<th scope="row"> User Description
+											</th>
+											<td th:text="${user.about}"></td>
+											<td disabled></td>
+
+										</tr>
+									</tbody>
+								</table>
+
+								<a class="btn btn-white text-danger">
+									<i class="fa-solid fa-trash text-danger"></i> Delete
+									Contact</a>&nbsp;
+								<form th:action="@{'/user/updateContact/'+${user.id}}" method="post">
+									<button class="btn btn-white text-success px-3"><i
+											class="fa-solid fa-pen-clip text-success"></i> Edit Contact</button>
+								</form>
+
+							</div>
+
+							<!--<div class=" text-center mb-2 ">
+								<form th:action="@{'/user/updateContact/'+${contact.cid}}" method="post">
+									<button class="btn btn-white text-success px-3"><i
+											class="fa-solid fa-pen-clip text-success"></i> Edit Contact</button>
+								</form>
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(() => {
+				$('.item').removeClass('active');
+				$('#profile').addClass('active');
+
+			});
+
+		</script>
+
+	</section>
+</body>
+
+</html>

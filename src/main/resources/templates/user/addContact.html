@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{user/base::layout(~{::title},~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Add Contact Page</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+
+				<div class=" col-md-10 offset-md-1 ">
+					<div class="card mb-2">
+
+						<div class="header  mt-3 mb-0 font-family text-center border-white">
+							<h3>Add Contact</h3>
+						</div>
+
+						<div class="card-body">
+
+							<form th:action="@{/user/addingContact}" method="post" enctype="multipart/form-data"
+								class="needs-validation" novalidate>
+
+								<div class="col-md-10 offset-md-1 mb-3">
+									<div class="input-group">
+										<i class="fa-solid fa-plus fa input-group-text bg-white border-white"></i>
+										<input type="text" class="form-control form-controls" name="name" id="name"
+											placeholder="Enter Contact Name" required pattern="[A-Za-z\s]{2,}"
+											autocomplete="off">
+										<div class="invalid-feedback">
+											<small class="small">Please enter valid contact name</small>
+											<span>Only letters are allowed</span>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="col-md-10 offset-md-1 mb-3">
+									<div class="input-group ">
+										<i class="fa-solid fa-user fa input-group-text bg-white border-white"></i>
+										<input type="text" class="form-control form-controls" name="nickname"
+											placeholder="Enter Nick Name">
+
+									</div>
+								</div>
+
+
+								<div class="col-md-10 offset-md-1  mb-3">
+									<div class="input-group ">
+										<i class="fa-solid fa-phone fa input-group-text bg-white border-white"></i>
+										<input type="text" class="form-control form-controls" name="phoneno"
+											id="phoneno" placeholder="Enter Contact Number" required
+											pattern="[0-9]{10}">
+										<div class="invalid-feedback">
+											<small class="small">Please enter valid phone number </small>
+											<span class="small">Please match the requested format 1234567890 </span>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-10 offset-md-1  mb-3">
+									<div class="input-group ">
+										<i class="fa-solid fa-at fa input-group-text bg-white border-white"></i>
+										<input type="email" class="form-control form-controls" name="email" id="email"
+											placeholder="Enter Email Address" required>
+										<div class="invalid-feedback">
+											<small class="small">Please enter valid email address</small>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-10 offset-md-1  mb-3">
+									<div class="input-group ">
+										<i class="fa-solid fa-briefcase fa input-group-text bg-white border-white"></i>
+										<input type="text" class="form-control form-controls" name="work" id="work"
+											placeholder="Enter Work Experience" required pattern="[A-Za-z\s]{2,255}">
+										<div class="invalid-feedback">
+											<small class="small">Please enter work field</small>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-10 offset-md-1 mb-3">
+									<div class="input-group ">
+										<i class="fa-solid fa-file-pen fa input-group-text bg-white border-white"></i>
+										<textarea class="form-control form-controls" name="description" rows="8"
+											placeholder="Enter Description"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-10 offset-md-1">
+									<div class="input-group ">
+										<i class="fa-solid fa-file-image fa input-group-text bg-white border-white"></i>
+										<input type="file" class="border-white" name="profileImg">
+
+									</div>
+								</div>
+								<div class="text-center">
+									<button class="btn btn-outline-info btn-sm" type="submit" name="submit">SAVE
+										CONTACT</button>
+
+								</div>
+							</form>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script>
+
+			// Example starter JavaScript for disabling form submissions if there are invalid fields
+			(function () {
+				'use strict'
+
+				// Fetch all the forms we want to apply custom Bootstrap validation styles to
+				var forms = document.querySelectorAll('.needs-validation')
+
+				// Loop over them and prevent submission
+				Array.prototype.slice.call(forms)
+					.forEach(function (form) {
+						form.addEventListener('submit', function (event) {
+							if (!form.checkValidity()) {
+								event.preventDefault()
+								event.stopPropagation()
+							}
+
+							form.classList.add('was-validated')
+						}, false)
+					})
+			})()
+
+		</script>
+
+		<script>
+			$(document).ready(() => {
+				$('.item').removeClass('active');
+				$('#add').addClass('active');
+
+			});
+
+
+
+
+		</script>
+
+
+	</section>
+</body>
+
+</html>

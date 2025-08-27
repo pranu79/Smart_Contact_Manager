@@ -1,0 +1,242 @@
+.bg-color {
+	background-color: rgb(0, 145, 108);
+}
+
+.btn-color {
+	color: #00b386;
+	font-weight: bold;
+	font-family: 'Clicker Script', cursive;
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+}
+
+section {
+	box-sizing: border-box;
+	height: 90vh;
+}
+
+.font-family {
+	font-family: 'Clicker Script', cursive;
+	font-family: 'Poppins', sans-serif;
+}
+
+.nav-bar {
+	position: fixed;
+}
+
+.banner {
+	width: 100%;
+	height: 92vh;
+	background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url('/img/banner3.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+}
+
+.heading {
+	margin-top: 240px;
+	font-family: 'Clicker Script', cursive;
+	font-family: 'Poppins', sans-serif;
+}
+
+.btn-color:hover {
+	color: rgb(0, 145, 108);
+	box-shadow: none;
+	text-decoration: none;
+}
+
+.line {
+	background: lightslategray;
+	height: 2px;
+	width: 100%;
+
+}
+
+
+.reg {
+	width: 100%;
+	height: 100vh;
+
+}
+
+.form-controls {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0%;
+	font-family: 'Clicker Script', cursive;
+	font-family: 'Poppins', sans-serif;
+	padding-left: 0;
+	margin-left: 0;
+
+}
+textarea{
+	width: 200px;
+}
+
+.form-controls:focus {
+	border-bottom: 2px solid #00b386;
+	box-shadow: none;
+
+	border-radius: 0%;
+
+}
+
+.form-label {
+	font-family: 'Clicker Script', cursive;
+	font-family: 'Poppins', sans-serif;
+}
+
+
+
+small{
+	padding: 0 45px;
+}
+
+/*user home page*/
+/*side bar*/
+.side-bar {
+	height: 100%;
+	width: 20%;
+	background-color: white;
+	position: fixed;
+	margin-top: 45px;
+	z-index: 999;
+
+}
+
+.side-bar a {
+	text-decoration: none;
+	font-family: 'Clicker Script', cursive;
+	font-family: 'Poppins', sans-serif;
+	display: block;
+	margin: 0px 25px;
+	padding: 10px 20px;
+	color: black;
+
+
+}
+
+.side-bar a:hover {
+	background-color: #00b386;
+	color: white !important;
+	border-radius: 2px;
+}
+
+.grid {
+	margin: 10px 70px;
+
+}
+
+.fa {
+	font-size: 20px;
+
+}
+
+.side-bar .cross {
+	position: absolute;
+	top: 6px;
+	right: 5%;
+	cursor: pointer;
+
+
+}
+
+
+@media (max-width:700px) {
+	.side-bar {
+		display: none;
+		width: 90% !important;
+		background-color: white;
+		height: 100vh;
+		position: fixed;
+		padding-top: 20px;
+
+	}
+
+	.side-bar a {
+		text-align: justify;
+	}
+
+	.content {
+		margin-left: 0% !important;
+
+	}
+
+
+}
+
+/*side bar end*/
+/*content section*/
+.fa-bars {
+	cursor: pointer;
+
+}
+
+
+.content {
+	margin-left: 20%;
+	height: 92vh;
+	background-color: rgb(230, 230, 230);
+}
+
+.content .container {
+	height: 100%;
+	background-color: rgb(230, 230, 230);
+}
+
+.btn-outline-info {
+	color: #00b386;
+	border: 1px solid #00b386;
+	color: #00b386;
+}
+
+.btn-outline-info:hover {
+	background-color: #00b386;
+	color: white;
+}
+
+
+/*content section end*/
+
+.card {
+	background-color: white;
+	box-shadow: 2px 2px 2px 3px #e2e2e2;
+
+}
+
+section {
+	background-color: rgb(230, 230, 230);
+	;
+}
+
+
+.ProfileImage {
+	object-fit: cover;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+}
+
+a {
+	cursor: pointer;
+}
+
+/*serach css*/
+.search-container {
+	position: relative;
+}
+
+.search-result {
+	position: absolute;
+	background-color: white;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid lightgray;
+	display: none;
+}
+
+.side-bar .active{
+	background-color: #00b386;
+	color: white;
+}

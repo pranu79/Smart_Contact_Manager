@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::title},~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Signin Page</title>
+</head>
+
+<body>
+
+	<section class="reg bg-color ">
+		<div class="line"></div>
+
+
+
+		<div class="container my-4 p-3 py-5">
+			<div class="row">
+				<div class="col-md-4 offset-md-4 ">
+					<div class="card">
+						<div class="card-heading mt-2">
+							<h3 class="text-center font-family ">Login Here </h3>
+						</div>
+
+						<th:block th:if="${param.error}">
+							<p class="text-center alert-danger " role="alert">Invalid Username and Password</p>
+						</th:block>
+
+						<th:block th:if="${param.logout}">
+							<p class="text-center alert-success  " role="alert">Logout Successfully</p>
+						</th:block>
+						
+						<th:block th:if="${param.change}">
+							<p th:text="${param.change}" class="text-center alert-success " role="alert"></p>
+						</th:block>
+
+
+						<div class="card-body">
+
+							<form th:action="@{/userLogin}" method="post">
+
+
+								<div class="mb-2">
+									<label class="form-label">Email address</label>
+									<input type="email" class="form-control" name="username"
+										placeholder="Enter your email" required>
+								</div>
+
+								<div class="mb-2">
+									<label class="form-label">Password</label>
+									<input type="password" class="form-control" name="password"
+										placeholder="Enter your password" required>
+								</div>
+
+									<a th:href="@{/forgotPassword}">Forgot Password</a>
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-color ">LOGIN</button><br>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script th:src="@{/js/script.js}"></script>
+
+	</section>
+</body>
+
+</html>

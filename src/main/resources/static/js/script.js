@@ -77,7 +77,7 @@ const payment = () => {
 				if (response.status == 'created') {
 					//open payment form
 					let options = {
-						key: "rzp_test_CJghtqd2CwnqLe",
+						key: "keyId",
 						amount: response.amount,
 						currency: "INR",
 						name: "Smart Contact Manager",
